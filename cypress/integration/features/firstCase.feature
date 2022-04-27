@@ -8,4 +8,4 @@ Feature: First test
 	@firstTest
 	Scenario: Description of scenario
 		Given User navigates to url
-		Then User adds a new todo to the list
+		Then User adds a new todo "firstStep" to the list

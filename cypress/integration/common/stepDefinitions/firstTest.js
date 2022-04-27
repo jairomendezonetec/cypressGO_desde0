@@ -7,11 +7,11 @@ Given(`User configure the execution before the scenarios`, () => {
 
 
 Given(`User navigates to url`, () => {
-	cy.visit('http://todomvc-app-for-testing.surge.sh/')
+	cy.visit('http://todomvc-app-for-testing.surge.sh/') // sigue funcionando con 3 segundos
 });
 
-When(`User adds a new todo to the list`, () => {
-	cy.get('.new-todo').type('Clean room{enter}')
-	cy.get('.toggle').click()
-	cy.contains('Clear completed').click()
+When(`User adds a new todo {string} to the list`, (option) => {
+	cy.get('.new-todo', {timeout: 6000}).type(`${option}{enter}`); //funcionará aumentando el timeout del objeto
 });
+
+
