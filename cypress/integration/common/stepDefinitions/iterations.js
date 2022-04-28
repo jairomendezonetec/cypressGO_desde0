@@ -1,11 +1,6 @@
 import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
 
 
-Given(`User configure the execution before the scenarios`, () => {
-	console.log("User configure the execution before the scenarios")
-});
-
-
 Given(`User navigates to url with delay`, () => {
 	// cy.visit('http://todomvc-app-for-testing.surge.sh/?delay-new-todo=3000') // sigue funcionando con 3 segundos
 	cy.visit('http://todomvc-app-for-testing.surge.sh/?delay-new-todo=5000') // No funcionaría por defecto con 5 segundos debido a que Cypress espera 4 segundos por elemento.
