@@ -1,4 +1,4 @@
-Feature: Iterations
+Feature: Todo Iterations
 	as a user
 	I want to test differents iterations
 

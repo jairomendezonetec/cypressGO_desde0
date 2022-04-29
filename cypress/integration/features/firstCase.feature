@@ -1,4 +1,4 @@
-Feature: First test
+Feature: ToDo First test
 	as a user
 	I want to test something
 

@@ -1,4 +1,4 @@
-Feature: Iterations
+Feature: To Do Validations
 	as a user
 	I want to test differents validationes
 
