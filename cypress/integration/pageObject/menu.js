@@ -1,8 +1,17 @@
 class EnvironmentsPage {
 
+	//selectores
+	
 	porcentaje (env, text) { return `//*[text()='${env}']/../..//*[contains(text(),'${text}')]`};
 	boton(env, text){return `//*[text()='${env}']/../..//*[text()='${text}']`};
 
+	//métodos
+
+	/***
+	 * Accede a una opción del entorno a través del menú lateral
+	 * @param option opción a seleccionar
+	 * @param env entonrno sobre el que realizar la acción
+	 */
 	accessTo(option, env){
 
 		cy.contains('a,','Entornos').click()

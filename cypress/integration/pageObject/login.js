@@ -2,8 +2,11 @@ import * as userData from './../data/users.json';
 
 class LoginPage {
 
-	
 
+	/***
+	 * Realiza el login con el usuario desde un fichero de datos
+	 * @param user Usuario a buscar en el fichero json
+	 */
 	login(user){
 		cy.visit(`${Cypress.env('testingGO')}`);
 
@@ -19,15 +22,17 @@ class LoginPage {
 		cy.get(`input[value='Acceder']`).click();
 	}
 	
-
+	/***
+	 * Realiza el logout
+	 */
 	logOut(){
 		cy.xpath("//button[./span[text()='Salir']]").click();
 	}
 
-	comprobarMensaje(mensaje) {
-		cy.contains(mensaje);
-	}
-
+	/***
+	 * Obtiene los datos del usuario
+	 * @param user Usuario a buscar en el fichero json
+	 */
 	getUser(user){
 		cy.wrap(user).as("user");
 

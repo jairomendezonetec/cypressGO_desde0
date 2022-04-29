@@ -12,11 +12,3 @@ When(`El usuario {string} realiza login`, user => {
   loginPage.login(user);
 });
 
-When(`Realizo los pasos previos a todos los casos`, () => {
-	console.log("Realizo los pasos previos a todos los casos")
-  });
-
-  When(`Comprobamos mensaje {string}`, (mensaje) => {
-	console.log(`Comprobamos mensaje ${mensaje}`);
-	loginPage.comprobarMensaje(mensaje);
-  });

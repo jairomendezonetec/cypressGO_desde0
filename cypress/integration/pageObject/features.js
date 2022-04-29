@@ -8,7 +8,11 @@ class FeaturesPage {
 	getNombre() {return `//table[@class='passed']//td`};
 
 	//metodos
-	accederAVerPruebas(env){
+
+			/***
+	 * Método para acceder a ver las pruebas
+	 */
+	accederAVerPruebas(){
 
 		cy.xpath(this.status('OK')).invoke('text').as('pasados');
 		cy.xpath(this.status('KO')).invoke('text').as('fallados');
@@ -19,6 +23,9 @@ class FeaturesPage {
 		cy.contains(`Ver pruebas`).eq(0).click();
 	}
 
+	/***
+	 * Método para acceder a ver el caso
+	 */
 	accederACaso(){
 		cy.xpath(this.getNombre()).eq(0).invoke('text').as('nombre_caso');
 		cy.contains(`Ver detalle`).click();
@@ -27,11 +34,17 @@ class FeaturesPage {
 		})
 	}
 
+	/***
+	 * Método para acceder a ver la imagen y cerrarla
+	 */
 	accederAImagen(){
 		cy.get(`.icon-camera-1`).click({force: true});
 		cy.get(`button[title='Close modal']`).click();
 	}
 
+	/***
+	 * Método para acceder a las estadisticas
+	 */
 	accesoEstadisticas(feature){	
 		cy.xpath(this.buttonFeature(feature, "Estadísticas")).click();
 		cy.url().should('eq', `${Cypress.env('testingGO')}main/stadistics`);
