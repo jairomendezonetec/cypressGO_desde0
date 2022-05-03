@@ -2,7 +2,6 @@ import * as userData from './../data/users.json';
 
 class LoginPage {
 
-
 	/***
 	 * Realiza el login con el usuario desde un fichero de datos
 	 * @param user Usuario a buscar en el fichero json

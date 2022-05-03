@@ -1,4 +1,4 @@
-class EnvironmentsPage {
+class MenuPage {
 
 	//selectores
 	
@@ -39,4 +39,4 @@ class EnvironmentsPage {
 	}
 	
 }
-export default EnvironmentsPage;
+export default MenuPage;
