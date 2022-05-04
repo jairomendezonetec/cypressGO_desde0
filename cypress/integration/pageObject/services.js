@@ -1,13 +1,15 @@
-
+/// <reference types="cypress" />
 class ServicesPage {
 
-	// Intercepta la petición y la devuelve como si el servicio hubiera fallado
+	/***
+	 * Intercepta la petición y la devuelve como si el servicio hubiera fallado
+	 */
 	proyectFailServices() {
 		cy.intercept({
 			method: 'GET',
 			url: '/clients'
-		},{
-			forceNetworkError:true
+		}, {
+			forceNetworkError: true
 		}).as('proyectsFail');
 
 		cy.get(`input[value='Acceder']`).click();
@@ -25,9 +27,9 @@ class ServicesPage {
 			url: '/clients'
 		}, (req) => {
 
-			req.reply((res) => {
-				console.log("hola", res)
-				res.body.name = 'Jairo'
+			req.reply((res) => { //reply, modifica la respuesta y devuelve como si fuera el propio servicio
+				console.log("Respuesta: ", res); // muestra la respuesta devuelta por el servicio
+				res.body.name = 'Jairo'; // modifica el valor name del body por "Jairo"
 				return res;
 			}
 			)
@@ -38,6 +40,7 @@ class ServicesPage {
 		cy.wait('@proyects', { timeout: 20000 }).then((response) => {
 			expect(response.response.statusCode).to.eq(200);
 			expect(response.response.body.projects).to.length(3);
+			expect(response.response.body.name).to.contain("Jairo");
 		})
 			.its('response.statusCode')
 			.should('eq', 200);
@@ -52,7 +55,7 @@ class ServicesPage {
 			method: 'GET',
 			url: '/reports/resume?client=Impulsyn_Android',
 		}, {
-			fixture: 'environment.json'
+			fixture: 'environment.json' // La respuesta es almacenada en la carpeta fixture. Es sustituida por la respuesta del servidor
 		}).as('proyects2');
 
 		cy.get(`input[value='Acceder']`).click();
@@ -64,8 +67,5 @@ class ServicesPage {
 			.its('response.statusCode')
 			.should('eq', 200);
 	}
-
-
-
 }
 export default ServicesPage;

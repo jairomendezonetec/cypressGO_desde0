@@ -1,9 +1,6 @@
 Feature: TestingGO - Services
 	as a user
-	I want to test differents validationes
-
-	Background:
-		Given User configure the execution before the scenarios
+	I want to test differents validationes with the services
 
 
 	@testingGO @servicesFail

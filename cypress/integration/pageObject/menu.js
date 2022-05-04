@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 class MenuPage {
 
 	//selectores
