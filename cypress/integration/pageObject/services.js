@@ -39,7 +39,7 @@ class ServicesPage {
 
 		cy.wait('@proyects', { timeout: 20000 }).then((response) => {
 			expect(response.response.statusCode).to.eq(200);
-			expect(response.response.body.projects).to.length(3);
+			expect(response.response.body.projects).to.length(7);
 			expect(response.response.body.name).to.contain("Jairo");
 		})
 			.its('response.statusCode')

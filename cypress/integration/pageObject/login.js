@@ -1,16 +1,26 @@
+/// <reference types="cypress" />
 import * as userData from './../data/users.json';
+
+
+Cypress.Commands.add('fillInput', (element, text) =>{
+	if (text !== "")
+	cy.get(element).clear().then(() => {
+		if (text) cy.get(element).type(text);
+	});
+})
 
 class LoginPage {
 
-	/***
+	/**
 	 * Realiza el login con el usuario desde un fichero de datos
 	 * @param user Usuario a buscar en el fichero json
 	 */
-	login(user, service) {
+	login(user, service = true) {
 		cy.visit(`${Cypress.env('testingGO')}`);
 
 		const userData = this.getUser(user);
 
+		cy
 		if (userData.username !== "")
 			cy.get("#userEmail").clear().then(() => {
 				if (userData.username) cy.get("#userEmail").type(userData.username);
@@ -18,18 +28,18 @@ class LoginPage {
 		cy.get("#userPassword").clear().then(() => {
 			if (userData.password) cy.get("#userPassword").type(userData.password);
 		});
-		if(service)
+		if (service)
 			cy.get(`input[value='Acceder']`).click();
 	}
 
-	/***
+	/**
 	 * Realiza el logout
 	 */
 	logOut() {
 		cy.xpath("//button[./span[text()='Salir']]").click();
 	}
 
-	/***
+	/**
 	 * Obtiene los datos del usuario
 	 * @param user Usuario a buscar en el fichero json
 	 */
@@ -81,7 +91,21 @@ class LoginPage {
 			.should('eq', 200);
 	}
 
+	/**
+	 * Realiza el login con el usuario desde un fichero de datos y con comandos creados
+	 * @param user Usuario a buscar en el fichero json
+	 */
+	loginCommands(user, service = false) {
+		cy.visit(`${Cypress.env('testingGO')}`);
 
+		const userData = this.getUser(user);
+
+		cy.fillInput("#userEmail", userData.username);
+		cy.fillInput("#userPassword", userData.password);
+
+		if (!service)
+			cy.get(`input[value='Acceder']`).click();
+	}
 
 }
 export default LoginPage;

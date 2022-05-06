@@ -12,7 +12,7 @@ class EnvironmentsPage {
 	 */
 	accederADetalle(env){
 		//Obtengo los valores de los porcentajes de pasados y fallados
-		cy.xpath(this.porcentaje(env, "Pasados"), {timeout: 10000}).invoke('text').as('pasados');
+		cy.xpath(this.porcentaje(env, "Pasados"), {timeout: 20000}).invoke('text').as('pasados');
 		cy.xpath(this.porcentaje(env, "Fallados")).invoke('text').as('fallados');
 
 		//Muestro los datos obtenidos

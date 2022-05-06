@@ -11,3 +11,9 @@ When(`El usuario {string} realiza login`, user => {
   loginPage.login(user);
 });
 
+When(`El usuario {string} realiza login con comandos`, user => {
+	loginPage.loginCommands(user);
+  });
+
+
+
