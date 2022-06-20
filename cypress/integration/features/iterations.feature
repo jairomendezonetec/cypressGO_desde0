@@ -9,4 +9,4 @@ Feature: Iterations
 	Scenario: Test differents interactions 
 		Given User navigates to url with delay
 		Then User does double click over option "secondStep"
-		And User does mouse over "secondStep"
+		And User does mouse over "secondStep-changed"

@@ -14,7 +14,7 @@ Given(`User navigates to url with delay`, () => {
 When(`User does double click over option {string}`, (option) => {
 	cy.get('.new-todo', {timeout: 6000}).type(`${option}{enter}`); //funcionará aumentando el timeout del objeto
 	cy.contains(option).dblclick();
-	cy.get(`input[value='${option}'][class='edit']`, {timeout: 6000}).type(`{enter}`);
+	cy.get(`input[value='${option}'][class='edit']`, {timeout: 6000}).type(`-changed{enter}`);
 });
 
 Given(`User does mouse over {string}`, (option) => {
