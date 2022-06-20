@@ -2,7 +2,7 @@
   "defaultCommandTimeout": 10000,
   "env": {
     "toDoURL": "http://todomvc-app-for-testing.surge.sh/",
-    "testingGO": "https://testingapp.grupoonetec.com/#/"
+    "testingGO": "https://testinggo.grupoonetec.com/#/"
   },
   "ignoreTestFiles": "*.js",
   "testFiles": "**/*.{feature,features}",
