@@ -4,6 +4,7 @@
 	"description": "Pruebas automatizadas con cypress desde cero",
 	"main": "index.js",
 	"scripts": {
+		"open": "Cypress open",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",

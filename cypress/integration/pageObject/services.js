@@ -39,7 +39,7 @@ class ServicesPage {
 
 		cy.wait('@proyects', { timeout: 20000 }).then((response) => {
 			expect(response.response.statusCode).to.eq(200);
-			expect(response.response.body.projects).to.length(3);
+			expect(response.response.body.projects).to.length(8);
 			expect(response.response.body.name).to.contain("Jairo");
 		})
 			.its('response.statusCode')
@@ -53,9 +53,9 @@ class ServicesPage {
 
 		cy.intercept({
 			method: 'GET',
-			url: '/reports/resume?client=Impulsyn_Android',
+			url: '/reports/resume?client=Impulsyn_Services',
 		}, {
-			fixture: 'environment.json' // La respuesta es almacenada en la carpeta fixture. Es sustituida por la respuesta del servidor
+			fixture: 'environment.json' // La respuesta almacenada en la carpeta fixture es sustituida por la respuesta del servidor
 		}).as('proyects2');
 
 		cy.get(`input[value='Acceder']`).click();
