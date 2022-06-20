@@ -11,7 +11,7 @@ Given(`User navigates to url`, () => {
 });
 
 When(`User adds a new todo {string} to the list`, (option) => {
-	cy.get('.new-todo', {timeout: 6000}).type(`${option}{enter}`); //funcionará aumentando el timeout del objeto
+	cy.get('.new-todo').type(`${option}{enter}`); 
 });
 
 
