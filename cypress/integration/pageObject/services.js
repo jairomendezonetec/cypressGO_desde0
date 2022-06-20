@@ -12,8 +12,6 @@ class ServicesPage {
 			forceNetworkError: true
 		}).as('proyectsFail');
 
-		cy.get(`input[value='Acceder']`).click();
-
 		cy.wait('@proyectsFail', { timeout: 20000 }).should('have.property', 'error');
 	}
 
@@ -35,11 +33,9 @@ class ServicesPage {
 			)
 		}).as('proyects');
 
-		cy.get(`input[value='Acceder']`).click();
-
 		cy.wait('@proyects', { timeout: 20000 }).then((response) => {
 			expect(response.response.statusCode).to.eq(200);
-			expect(response.response.body.projects).to.length(7);
+			expect(response.response.body.projects).to.length(8);
 			expect(response.response.body.name).to.contain("Jairo");
 		})
 			.its('response.statusCode')
@@ -53,12 +49,10 @@ class ServicesPage {
 
 		cy.intercept({
 			method: 'GET',
-			url: '/reports/resume?client=Impulsyn_Android',
+			url: '/reports/resume?client=Impulsyn_Services',
 		}, {
 			fixture: 'environment.json' // La respuesta es almacenada en la carpeta fixture. Es sustituida por la respuesta del servidor
 		}).as('proyects2');
-
-		cy.get(`input[value='Acceder']`).click();
 
 		cy.wait('@proyects2', { timeout: 20000 }).then((response) => {
 			expect(response.response.statusCode).to.eq(200);
