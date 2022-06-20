@@ -14,7 +14,6 @@ Given(`User validates CSS`, (datatable) => {
 		console.log('hola')
 		cy.get('label').should('have.css', row[0], row[1]);
 	});
-	
 });
 
 
