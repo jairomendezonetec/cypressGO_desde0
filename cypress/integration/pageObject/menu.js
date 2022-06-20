@@ -15,6 +15,7 @@ class MenuPage {
 	accessTo(option, env){
 
 		cy.contains('a,','Entornos').click()
+		cy.wait(1000)
 		cy.contains('a,', env).click()
 		cy.contains('div.sidebar-subsubmenu.active a',option).click()
 
@@ -34,7 +35,7 @@ class MenuPage {
 				break;
 		}
 		
-		cy.url().should('eq', `https://testingapp.grupoonetec.com/#/main/${page}`);
+		cy.url().should('eq', `https://testinggo.grupoonetec.com/#/main/${page}`);
 
 	}
 	

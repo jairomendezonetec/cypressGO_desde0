@@ -1,10 +1,11 @@
 {
   "env": {
     "toDoURL": "http://todomvc-app-for-testing.surge.sh/",
-	"testingGO": "https://testingapp.grupoonetec.com/#/"
+	"testingGO": "https://testinggo.grupoonetec.com/#/"
   },
   "ignoreTestFiles": "*.js",
   "testFiles": "**/*.{feature,features}",
   "viewportWidth": 1920,
-  "viewportHeight": 1080
+  "viewportHeight": 1080,
+  "defaultCommandTimeout": 30000
 }
