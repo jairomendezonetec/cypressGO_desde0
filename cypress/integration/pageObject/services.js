@@ -1,4 +1,8 @@
 /// <reference types="cypress" />
+
+import EnvironmentsPage from "./environment";
+import MenuPage from "./menu";
+
 class ServicesPage {
 
 	/***
@@ -29,7 +33,7 @@ class ServicesPage {
 
 			req.reply((res) => { //reply, modifica la respuesta y devuelve como si fuera el propio servicio
 				console.log("Respuesta: ", res); // muestra la respuesta devuelta por el servicio
-				res.body.name = 'Jairo'; // modifica el valor name del body por "Jairo"
+				res.body.name = 'TestingQA'; // modifica el valor name del body por "Jairo"
 				return res;
 			}
 			)
@@ -39,8 +43,8 @@ class ServicesPage {
 
 		cy.wait('@proyects', { timeout: 20000 }).then((response) => {
 			expect(response.response.statusCode).to.eq(200);
-			expect(response.response.body.projects).to.length(8);
-			expect(response.response.body.name).to.contain("Jairo");
+			expect(response.response.body.projects).to.length(4);
+			expect(response.response.body.name).to.contain("TestingQA");
 		})
 			.its('response.statusCode')
 			.should('eq', 200);
@@ -53,19 +57,18 @@ class ServicesPage {
 
 		cy.intercept({
 			method: 'GET',
-			url: '/reports/resume?client=Impulsyn_Services',
-		}, {
-			fixture: 'environment.json' // La respuesta almacenada en la carpeta fixture es sustituida por la respuesta del servidor
+			url: '/reports/resume?client=L%C3%ADnea%20Directa%20-%20Backend',
 		}).as('proyects2');
 
 		cy.get(`input[value='Acceder']`).click();
 
 		cy.wait('@proyects2', { timeout: 20000 }).then((response) => {
 			expect(response.response.statusCode).to.eq(200);
-			expect(response.response.body.reports).to.length(2);
+			expect(response.response.body.reports).to.length(1);
+			console.log(response.response.body.reports[0].passed);
+			let value = response.response.body.reports[0].passed
+			expect(value).to.eq(3);
 		})
-			.its('response.statusCode')
-			.should('eq', 200);
 	}
 }
 export default ServicesPage;
