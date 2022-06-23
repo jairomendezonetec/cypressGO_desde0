@@ -2,13 +2,6 @@
 import * as userData from './../data/users.json';
 
 
-Cypress.Commands.add('fillInput', (element, text) =>{
-	if (text !== "")
-	cy.get(element).clear().then(() => {
-		if (text) cy.get(element).type(text);
-	});
-})
-
 class LoginPage {
 
 	/**
@@ -17,10 +10,8 @@ class LoginPage {
 	 */
 	login(user, service = true) {
 		cy.visit(`${Cypress.env('testingGO')}`);
-
 		const userData = this.getUser(user);
 
-		cy
 		if (userData.username !== "")
 			cy.get("#userEmail").clear().then(() => {
 				if (userData.username) cy.get("#userEmail").type(userData.username);

@@ -34,6 +34,7 @@ class MenuPage {
 			default:
 				break;
 		}
+
 		
 		cy.url().should('eq', `https://testingapp.grupoonetec.com/#/main/${page}`);
 
